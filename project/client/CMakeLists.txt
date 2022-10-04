@@ -1,0 +1,2 @@
+add_subdirectory(connector)
+add_subdirectory(qtclient)
