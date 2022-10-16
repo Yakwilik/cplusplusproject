@@ -12,7 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: bodjan/cxx
-    needs: [check]
     steps:
       - uses: actions/checkout@v2
       - run: make build
