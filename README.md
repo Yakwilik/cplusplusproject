@@ -1,5 +1,5 @@
 # cplusplusproject
-[![Build Status](https://travis-ci.org/DaniilZelenko/cplusplusproject.svg?branch=ZelenkoDev)](https://travis-ci.org/DaniilZelenko/cplusplusproject) [![codecov](https://codecov.io/gh/DaniilZelenko/cplusplusproject/branch/ZelenkoDev/graph/badge.svg)](https://codecov.io/gh/DaniilZelenko/cplusplusproject)
+<!-- [![Build Status](https://travis-ci.org/DaniilZelenko/cplusplusproject.svg?branch=ZelenkoDev)](https://travis-ci.org/DaniilZelenko/cplusplusproject) [![codecov](https://codecov.io/gh/DaniilZelenko/cplusplusproject/branch/ZelenkoDev/graph/badge.svg)](https://codecov.io/gh/DaniilZelenko/cplusplusproject) -->
 
 
 <div class="app">
