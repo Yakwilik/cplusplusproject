@@ -12,9 +12,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: bodjan/cxx
+    needs: [check]
     steps:
       - uses: actions/checkout@v2
       - run: make build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: build/project/client/interface/PartyTime/PartyTime
   test:
     runs-on: ubuntu-latest
     container: bodjan/cxx
@@ -22,6 +27,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: make test
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Binary file
+          path: build/project/client/interface/PartyTime/PartyTime
+  # test:
+  #   runs-on: ubuntu-latest
+  #   container: bodjan/cxx
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: make test
   # memtest:
   #   runs-on: ubuntu-latest
   #   container: bodjan/cxx
