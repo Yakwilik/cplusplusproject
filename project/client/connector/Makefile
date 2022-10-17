@@ -1,5 +1,6 @@
 TARGET=libconnector.a
-host_dir=
+required_lines_cov=12345
+required_functions_cov=12345
 
 .PHONY: all build rebuild check memcheck cov_test clean debug_build  run_docker get_home
 
@@ -31,7 +32,10 @@ run_docker:
 	docker run -it -v "${PWD}:/project" -v ~/.gitconfig:/etc/gitconfig -v ~/.ssh:/root/.ssh:ro -w "/project" --rm yakwilik/gcc_gdb
 
 cov: test
-	scripts/cov.sh
+	scripts/cov.sh $(required_lines_cov) $(required_functions_cov)
 
 get_home:
 	echo "$(HOME)"
+
+some:
+	scripts/catfile.sh
