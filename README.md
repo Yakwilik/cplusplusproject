@@ -1,8 +1,8 @@
 # cplusplusproject
 Status of last Deployment: <br>
-<img src="https://github.com/Yakwilik/cplusplusproject/workflows/CI/badge.svg?branch=master"><br>
+<img src="https://github.com/Yakwilik/cplusplusproject/workflows/CI/badge.svg?branch=ZelenkoDevFixed"><br>
 
-Copyleft by Daniil Zelenko 2022
+Copyleft by MRGaTeAM 2022
 
 
 <div class="app">
