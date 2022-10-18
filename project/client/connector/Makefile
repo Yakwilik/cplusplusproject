@@ -1,6 +1,6 @@
 TARGET=libconnector.a
-required_lines_cov=12345
-required_functions_cov=12345
+required_lines_cov=4
+required_functions_cov=1
 
 .PHONY: all build rebuild check memcheck cov_test clean debug_build  run_docker get_home
 
