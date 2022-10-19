@@ -2,6 +2,8 @@ TARGET=libconnector.a
 required_lines_cov=4
 required_functions_cov=1
 
+container=yakwilik/cxx:valgrind
+
 .PHONY: all build rebuild check memcheck cov_test clean debug_build  run_docker get_home
 
 all: clean check build test memtest sanitize cov
@@ -36,7 +38,7 @@ clean:
 	rm -rf build
 
 run_docker:
-	docker run -it -v "${PWD}:/project" -v ~/.gitconfig:/etc/gitconfig -v ~/.ssh:/root/.ssh:ro -w "/project" --rm yakwilik/gcc_gdb
+	docker run -it -v "${PWD}:/project" -v ~/.gitconfig:/etc/gitconfig -v ~/.ssh:/root/.ssh:ro -w "/project" --rm $(container)
 
 cov: test
 	scripts/cov.sh $(required_lines_cov) $(required_functions_cov)
