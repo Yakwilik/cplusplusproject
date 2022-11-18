@@ -45,4 +45,4 @@ cov: test
 	scripts/cov.sh
 
 format:
-	clang-format -i lib/src/*
+	clang-format -i lib/include/* lib/src/* lib/interface/*

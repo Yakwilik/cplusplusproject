@@ -6,15 +6,14 @@ if(WITH_TESTING)
 endif()
 
 
-set(MY_SRC_FILES "src/utils.cpp")
 set(MY_INCLUDE_DIRS "include")
 set(MY_INTERFACE_DIRS "interface")
 
-file(GLOB SOURCES ${MY_SRC_FILES})
+file(GLOB SOURCES "src/*.cpp")
 file(GLOB INCLUDE_DIRS ${MY_INCLUDE_DIRS})
 file(GLOB INTERFACE_DIRS ${MY_INTERFACE_DIRS})
 
-add_library(${PROJECT_NAME} STATIC ${MY_SRC_FILES})
+add_library(${PROJECT_NAME} STATIC ${SOURCES})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIRS} ${INTERFACE_DIRS})
 
