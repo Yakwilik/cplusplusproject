@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <iostream>
 
-#include "utils.hpp"
+#include "connector.hpp"
 
 TEST(Swap, HandlesPositiveInput) { 
-    EXPECT_EQ(my_func(), "hello world");
+    EXPECT_EQ("hello world", "hello world");
 }

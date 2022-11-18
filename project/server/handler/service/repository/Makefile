@@ -7,10 +7,6 @@ CONTEXT=.
 
 all: test cov format check
 
-# docker_run
-# memcheck cov format check
-# sanitize cov format check
-
 docker_build: $(DOCKERFILE)
 	docker build -f $(DOCKERFILE) -t $(IMAGE_NAME) $(CONTEXT)
 
