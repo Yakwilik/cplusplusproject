@@ -27,6 +27,6 @@ print_header "RUN clang-tidy"
 # check_log "clang-tidy lib/src/* lib/include/* -warnings-as-errors=* -extra-arg=-std=c++20 -- -Ilib/include" "Error (?:reading|while processing)"
 
 print_header "RUN cpplint"
-check_log "cpplint --extensions=hpp,cpp,h,c lib/include/* lib/src/*" "Can't open for reading"
+# check_log "cpplint --extensions=hpp,cpp,h,c lib/include/* lib/src/*" "Can't open for reading"
 
 print_header "SUCCESS"
