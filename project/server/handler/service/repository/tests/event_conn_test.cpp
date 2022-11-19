@@ -6,68 +6,75 @@
 
 class EventConnTest : public ::testing::Test {
  protected:
-    void SetUp() override {}
+    void SetUp() override {
+        Event kevent = {
+            .title = "Hally hopter",
+            .description = "For funny people!",
+            .date_time = "2023-01-01 00:00:00",
+            .max_visitors = 10,
+            .address = {
+                .address = "Кремль, Москва",
+                .longitude = 34.0294,
+                .latitude = 3.24543
+            }
+        };
+    }
 
     void TearDown() override {}
 
     Connector connector;
+    Event event;
 };
 
 
-TEST_F(EventConnTest, CreateEventWithMaxVisitors) { 
-    EXPECT_NO_THROW(connector.event_conn->create_event("ninja", 
-        "Very Cool Party", "г. Москва, 2-я Владимирская, 38/18",
-        "Лаунж в подвале дома", "2007-05-08 12:35:29", 100));
-}
-
-TEST_F(EventConnTest, CreateEventWithoutMaxVisitors) { 
-    EXPECT_NO_THROW(connector.event_conn->create_event("ninja", 
-        "Very Cool Party", "г. Москва, 2-я Владимирская, 38/18",
-        "Лаунж в подвале дома", "2007-05-08 12:35:29"));
+TEST_F(EventConnTest, CreateEvent) { 
+    EXPECT_NO_THROW(Event event_data = connector.event_conn->create_event(event));
 }
 
 TEST_F(EventConnTest, UpdateTitle) { 
-    EXPECT_NO_THROW(connector.event_conn->update_title("anna_kitty", "Страшный праздник", "Хэллоуин"));
+    EXPECT_NO_THROW(connector.event_conn->update_title(1234, "Хэллоуин"));
 }
 
 TEST_F(EventConnTest, UpdateDescription) { 
-    EXPECT_NO_THROW(connector.event_conn->update_description("anna_kitty", "Хэллоуин",
-                                                                    "И не забудьте про дресс-код"));
+    EXPECT_NO_THROW(connector.event_conn->update_description(1234, "И не забудьте про дресс-код"));
 }
 
 TEST_F(EventConnTest, UpdateDateTime) {
-    EXPECT_NO_THROW(connector.event_conn->update_date_time("anna_kitty", "Хэллоуин", "2022-11-11 11:11:11"));
-}
-
-
-TEST_F(EventConnTest, UpdateMaxVisitors) {
-    EXPECT_NO_THROW(connector.event_conn->update_max_visitors("anna_kitty", "Хэллоуин", 111));
+    EXPECT_NO_THROW(connector.event_conn->update_date_time(1234, "2022-11-11 11:11:11"));
 }
 
 TEST_F(EventConnTest, UpdateAddress) {
-    EXPECT_NO_THROW(connector.event_conn->update_address("anna_kitty", "Хэллоуин", "В деревне у бабушки"));
+    EXPECT_NO_THROW(connector.event_conn->update_address(1234, "В деревне у бабушки"));
+}
+
+TEST_F(EventConnTest, UpdateMaxVisitors) {
+    EXPECT_NO_THROW(connector.event_conn->update_max_visitors(1234, 111));
 }
 
 TEST_F(EventConnTest, AddVisitor) {
-    EXPECT_NO_THROW(connector.event_conn->add_visitor("anna_kitty", "Хэллоуин", "ninja"));
+    EXPECT_NO_THROW(connector.event_conn->add_visitor(1234, 235213));
 }
 
 TEST_F(EventConnTest, DeleteVisitor) {
-    EXPECT_NO_THROW(connector.event_conn->delete_visitor("anna_kitty", "Хэллоуин", "ninja"));
+    EXPECT_NO_THROW(connector.event_conn->delete_visitor(1234, 235214));
 }
 
 TEST_F(EventConnTest, DeleteEvent) {
-    EXPECT_NO_THROW(connector.event_conn->delete_event("anna_kitty", "Хэллоуин"));
+    EXPECT_NO_THROW(connector.event_conn->delete_event(1234));
 }
 
 TEST_F(EventConnTest, GetEventData) {
-    EXPECT_NO_THROW(Party party = connector.event_conn->get_event_data("anna_kitty", "Хэллоуин"));
+    EXPECT_NO_THROW(Event event_data = connector.event_conn->get_event_data(1343));
 }
 
-TEST_F(EventConnTest, GetVisitedEvents) {
-    EXPECT_NO_THROW(std::vector<Party> visited_party = connector.event_conn->get_visited_events("anna_kitty"));
+TEST_F(EventConnTest, GetVisitedEventsByProfile) {
+    EXPECT_NO_THROW(std::vector<Event> visited_event = connector.event_conn->get_visited_events_by_profile(435674));
 }
 
-TEST_F(EventConnTest, GetOrganizedEvents) {
-    EXPECT_NO_THROW(std::vector<Party> organized_party = connector.event_conn->get_organized_events("anna_kitty"));
+TEST_F(EventConnTest, GetOrganizedEventsByProfile) {
+    EXPECT_NO_THROW(std::vector<Event> organized_event = connector.event_conn->get_organized_events_by_profile(435674));
+}
+
+TEST_F(EventConnTest, GetVisitorsByEvent) {
+    EXPECT_NO_THROW(std::vector<Profile> organized_event = connector.event_conn->get_visitors_by_event(342));
 }

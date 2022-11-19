@@ -7,35 +7,23 @@
 
 class IEventConnector {
 public:
-  virtual void create_event(std::string owner_nickname, std::string title,
-                            std::string address, std::string description,
-                            std::string date_time, size_t max_visitors) = 0;
-  virtual void create_event(std::string owner_nickname, std::string title,
-                            std::string address, std::string description,
-                            std::string date_time) = 0;
+  virtual Event create_event(Event event) = 0;
 
-  virtual void update_title(std::string owner_nickname, std::string old_title,
-                            std::string new_title) = 0;
-  virtual void update_description(std::string owner_nickname, std::string title,
-                                  std::string new_decription) = 0;
-  virtual void update_date_time(std::string owner_nickname, std::string title,
-                                std::string new_date_time) = 0;
-  virtual void update_max_visitors(std::string owner_nickname,
-                                   std::string title,
-                                   size_t new_max_visitors) = 0;
-  virtual void update_address(std::string owner_nickname, std::string title,
-                              std::string new_address) = 0;
+  virtual void update_title(size_t event_id, std::string new_title) = 0;
+  virtual void update_description(size_t event_id, std::string new_description) = 0;
+  virtual void update_date_time(size_t event_id, std::string new_date_time) = 0;
+  virtual void update_max_visitors(size_t event_id, size_t new_max_visitors) = 0;
+  virtual void update_address(size_t event_id, std::string new_address) = 0;
 
-  virtual void add_visitor(std::string owner_nickname, std::string title,
-                           std::string visitor_nickname) = 0;
+  virtual void add_visitor(size_t event_id, size_t profile_id) = 0;
 
-  virtual void delete_visitor(std::string owner_nickname, std::string title,
-                              std::string visitor_nickname) = 0;
-  virtual void delete_event(std::string owner_nickname, std::string title) = 0;
+  virtual void delete_visitor(size_t event_id, size_t profile_id) = 0;
+  virtual void delete_event(size_t event_id) = 0;
 
-  virtual Party get_event_data(std::string owner_nickname,
-                               std::string title) = 0;
+  virtual Event get_event_data(size_t event_id) = 0;
 
-  virtual std::vector<Party> get_visited_events(std::string nickname) = 0;
-  virtual std::vector<Party> get_organized_events(std::string nickname) = 0;
+  virtual std::vector<Event> get_visited_events_by_profile(size_t profile_id) = 0;
+  virtual std::vector<Event> get_organized_events_by_profile(size_t profile_id) = 0;
+
+  virtual std::vector<Profile> get_visitors_by_event(size_t event_id) = 0;
 };

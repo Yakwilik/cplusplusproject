@@ -1,12 +1,9 @@
 #include "authorization_connector.hpp"
 
-void AuthorizationConnector::create_profile(std::string nickname,
-                                            std::string password,
-                                            std::string email, size_t age) {}
-void AuthorizationConnector::create_profile(std::string nickname,
-                                            std::string password,
-                                            std::string email, size_t age,
-                                            std::string description) {}
+Profile AuthorizationConnector::create_profile(Profile profile) {
+  Profile created_profile;
+  return created_profile;
+}
 
 bool AuthorizationConnector::existence_nickname(std::string nickname) {
   return true;
@@ -16,30 +13,29 @@ bool AuthorizationConnector::existence_email(std::string email) {
 }
 
 Profile
-AuthorizationConnector::get_profile_data_by_nickname(std::string nickname) {
+AuthorizationConnector::get_profile_data(size_t profile_id) {
   Profile profile;
   return profile;
 }
 
-void AuthorizationConnector::update_nickname(std::string old_nickname,
+void AuthorizationConnector::update_nickname(size_t profile_id,
                                              std::string new_nickname) {}
-void AuthorizationConnector::update_email(std::string nickname,
+void AuthorizationConnector::update_email(size_t profile_id,
                                           std::string new_email) {}
-void AuthorizationConnector::update_password(std::string nickname,
+void AuthorizationConnector::update_password(size_t profile_id,
                                              std::string new_password) {}
-void AuthorizationConnector::update_age(std::string nickname, size_t new_age) {}
-void AuthorizationConnector::update_description(std::string nickname,
+void AuthorizationConnector::update_description(size_t profile_id,
                                                 std::string new_description) {}
 
-bool AuthorizationConnector::check_password(std::string nickname,
+bool AuthorizationConnector::check_password(size_t profile_id,
                                             std::string input_password) {
   return true;
 }
 
-void AuthorizationConnector::delete_profile(std::string nickname) {}
+void AuthorizationConnector::delete_profile(size_t profile_id) {}
 
-void AuthorizationConnector::create_token(std::string nickname) {}
-void AuthorizationConnector::delete_token(std::string nickname) {}
-bool AuthorizationConnector::is_actual_token(std::string nickname) {
+void AuthorizationConnector::create_token(size_t profile_id) {}
+void AuthorizationConnector::delete_token(size_t profile_id) {}
+bool AuthorizationConnector::is_actual_token(size_t profile_id) {
   return true;
 }

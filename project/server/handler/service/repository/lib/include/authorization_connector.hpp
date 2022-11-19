@@ -6,27 +6,23 @@
 #include "iauthorization_connector.hpp"
 
 class AuthorizationConnector : public IAuthorizationConnector {
-  void create_profile(std::string nickname, std::string password,
-                      std::string email, size_t age);
-  void create_profile(std::string nickname, std::string password,
-                      std::string email, size_t age, std::string description);
+  Profile create_profile(Profile profile);
 
   bool existence_nickname(std::string nickname);
   bool existence_email(std::string email);
 
-  Profile get_profile_data_by_nickname(std::string nickname);
+  Profile get_profile_data(size_t profile_id);
 
-  void update_nickname(std::string old_nickname, std::string new_nickname);
-  void update_email(std::string nickname, std::string new_email);
-  void update_password(std::string nickname, std::string new_password);
-  void update_age(std::string nickname, size_t new_age);
-  void update_description(std::string nickname, std::string new_description);
+  void update_nickname(size_t profile_id, std::string new_nickname);
+  void update_email(size_t profile_id, std::string new_email);
+  void update_password(size_t profile_id, std::string new_password);
+  void update_description(size_t profile_id, std::string new_description);
 
-  bool check_password(std::string nickname, std::string input_password);
+  bool check_password(size_t profile_id, std::string input_password);
 
-  void delete_profile(std::string nickname);
+  void delete_profile(size_t profile_id);
 
-  void create_token(std::string nickname);
-  void delete_token(std::string nickname);
-  bool is_actual_token(std::string nickname);  // Удаляю токен при устаревании
+  void create_token(size_t profile_id);
+  void delete_token(size_t profile_id);
+  bool is_actual_token(size_t profile_id);  // Удаляю токен при устаревании
 };

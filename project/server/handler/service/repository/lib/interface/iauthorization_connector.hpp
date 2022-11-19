@@ -7,32 +7,27 @@
 
 class IAuthorizationConnector {
 public:
-  virtual void create_profile(std::string nickname, std::string password,
-                              std::string email, size_t age,
-                              std::string description) = 0;
-  virtual void create_profile(std::string nickname, std::string password,
-                              std::string email, size_t age) = 0;
+  virtual Profile create_profile(Profile profile) = 0;
 
   virtual bool existence_nickname(std::string nickname) = 0;
   virtual bool existence_email(std::string email) = 0;
 
-  virtual Profile get_profile_data_by_nickname(std::string nickname) = 0;
+  virtual Profile get_profile_data(size_t profile_id) = 0;
 
-  virtual void update_nickname(std::string old_nickname,
+  virtual void update_nickname(size_t profile_id,
                                std::string new_nickname) = 0;
-  virtual void update_email(std::string nickname, std::string new_email) = 0;
-  virtual void update_password(std::string nickname,
+  virtual void update_email(size_t profile_id, std::string new_email) = 0;
+  virtual void update_password(size_t profile_id,
                                std::string new_password) = 0;
-  virtual void update_age(std::string nickname, size_t new_age) = 0;
-  virtual void update_description(std::string nickname,
+  virtual void update_description(size_t profile_id,
                                   std::string new_description) = 0;
 
-  virtual bool check_password(std::string nickname,
+  virtual bool check_password(size_t profile_id,
                               std::string input_password) = 0;
 
-  virtual void delete_profile(std::string nickname) = 0;
+  virtual void delete_profile(size_t profile_id) = 0;
 
-  virtual void create_token(std::string nickname) = 0;
-  virtual void delete_token(std::string nickname) = 0;
-  virtual bool is_actual_token(std::string nickname) = 0;
+  virtual void create_token(size_t profile_id) = 0;
+  virtual void delete_token(size_t profile_id) = 0;
+  virtual bool is_actual_token(size_t profile_id) = 0;
 };
